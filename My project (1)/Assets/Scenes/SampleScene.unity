@@ -481,9 +481,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cam_pos:
-  - {fileID: 621376237}
-  - {fileID: 1739901491}
+  - {fileID: 621376238}
+  - {fileID: 1739901492}
   player: {fileID: 0}
+  T_min: {fileID: 0}
+  cam_off: -10
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
