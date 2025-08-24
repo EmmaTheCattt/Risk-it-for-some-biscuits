@@ -8,6 +8,7 @@ public class Player_script : MonoBehaviour
     bool Right = false;
     bool Left = false;
     bool Jump = false;
+    bool shift = false;
 
     Vector2 movement;
 
@@ -15,6 +16,7 @@ public class Player_script : MonoBehaviour
     public float y_mov;
 
     public float speed = 1f;
+    public float Max_speed = 5f;
     public float J_force = 5f;
 
 
@@ -28,7 +30,6 @@ public class Player_script : MonoBehaviour
     void Update()
     {
         InputCheck();
-
         ApplyInput();
     }
 
@@ -65,11 +66,21 @@ public class Player_script : MonoBehaviour
         Right = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
         Left = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
         Jump = Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+        shift = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
     }
 
     private void FixedUpdate()
     {
         movement = new Vector2(x_mov, y_mov);
-        transform.position += new Vector3(movement.x, movement.y, 0) * speed * Time.fixedDeltaTime;
+
+        if (shift == true)
+        {
+            transform.position += new Vector3(movement.x, movement.y, 0) * Max_speed * Time.fixedDeltaTime;
+
+        }
+        if (shift == false)
+        {
+            transform.position += new Vector3(movement.x, movement.y, 0) * speed * Time.fixedDeltaTime;
+        }
     }
 }
