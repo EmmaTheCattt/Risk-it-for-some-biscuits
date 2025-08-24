@@ -19,11 +19,13 @@ public class Player_script : MonoBehaviour
     public float Max_speed = 5f;
     public float J_force = 5f;
 
+    public SpriteRenderer SR;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        SR = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -38,11 +40,21 @@ public class Player_script : MonoBehaviour
         if (Right == true)
         {
             x_mov = 1f;
+
+            if (Left != true)
+            {
+                SR.flipX = false;
+            }
         }
 
         if (Left == true)
         {
             x_mov = -1f;
+
+            if (Right != true)
+            {
+                SR.flipX = true;
+            }
         }
 
         if (Jump == true)
